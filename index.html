@@ -14,6 +14,9 @@
     <div id="app">
       <h1>{{ product }}</h1>
       <img v-bind:src="image" />
+      <p v-if="inventory > 10">In Stock</p>
+      <p v-else-if="inventory <= 10 && inventory > 0">A few left</p>
+      <p v-else>Out of Stock</p>
     </div>
 
     <script src="./main.js"></script>
