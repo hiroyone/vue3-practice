@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Vue Mastery</title>
+    <title>Vue3 Pracice</title>
     <!-- Import Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
@@ -13,10 +13,32 @@
   <body>
     <div id="app">
       <h1>{{ product }}</h1>
-      <img v-bind:src="image" />
+      <img v-bind:src="image" style="width: 15rem" />
       <p v-if="inventory > 10">In Stock</p>
       <p v-else-if="inventory <= 10 && inventory > 0">A few left</p>
       <p v-else>Out of Stock</p>
+
+      <div>
+        <h2>Materials</h2>
+        <ul>
+          <li v-for="detail in details">{{detail}}</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Color</h2>
+        <ul>
+          <li
+            v-for="variant in variants"
+            v-bind:key="variant.id"
+            v-on:mouseover="updateImage(variant.image)"
+          >
+            {{variant.color}}
+          </li>
+        </ul>
+        <div>Cart({{ cart }})</div>
+        <button v-on:click="addToCart">Add to Cart</button>
+      </div>
     </div>
 
     <script src="./main.js"></script>
