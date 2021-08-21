@@ -32,12 +32,18 @@
             v-for="variant in variants"
             v-bind:key="variant.id"
             v-on:mouseover="updateImage(variant.image)"
-          >
-            {{variant.color}}
-          </li>
+            class="color-circle"
+            v-bind:style="{ backgroundColor: variant.color}"
+          ></li>
         </ul>
         <div>Cart({{ cart }})</div>
-        <button v-on:click="addToCart">Add to Cart</button>
+        <button
+          v-on:click="addToCart"
+          v-bind:disabled="!inStock"
+          v-bind:class="{disabledButton: !inStock }"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
 
