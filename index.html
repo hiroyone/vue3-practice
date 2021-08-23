@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Vue3 Pracice</title>
+    <title>Vue3 Practice</title>
     <!-- Import Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
@@ -12,42 +12,14 @@
 
   <body>
     <div id="app">
-      <h1>{{ product }}</h1>
-      <img v-bind:src="image" style="width: 15rem" />
-      <p v-if="inventory > 10">In Stock</p>
-      <p v-else-if="inventory <= 10 && inventory > 0">A few left</p>
-      <p v-else>Out of Stock</p>
+      <h1>{{ title }}</h1>
 
-      <div>
-        <h2>Materials</h2>
-        <ul>
-          <li v-for="detail in details">{{detail}}</li>
-        </ul>
-      </div>
-
-      <div>
-        <h2>Color</h2>
-        <ul>
-          <li
-            v-for="variant in variants"
-            v-bind:key="variant.id"
-            v-on:mouseover="updateImage(variant.image)"
-            class="color-circle"
-            v-bind:style="{ backgroundColor: variant.color}"
-          ></li>
-        </ul>
-        <div>Cart({{ cart }})</div>
-        <button
-          v-on:click="addToCart"
-          v-bind:disabled="!inStock"
-          v-bind:class="{disabledButton: !inStock }"
-        >
-          Add to Cart
-        </button>
-      </div>
+      <div class="cart">Cart({{ cart }})</div>
+      <product-display v-bind:premium="premium"></product-display>
     </div>
 
     <script src="./main.js"></script>
+    <script src="./components/ProductDisplay.js"></script>
     <script>
       const mountedApp = app.mount("#app");
     </script>
